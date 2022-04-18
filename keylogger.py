@@ -1,3 +1,5 @@
+#!/bin/python3
+
 import os
 from pynput.keyboard import Listener
 
